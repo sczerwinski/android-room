@@ -8,3 +8,5 @@ pluginManagement {
 }
 
 rootProject.name = "android-room"
+
+include(":room:database")
