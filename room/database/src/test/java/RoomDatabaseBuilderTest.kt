@@ -32,8 +32,8 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
-@ExtendWith(
-    MockKExtension::class)
+@ExtendWith(MockKExtension::class)
+@DisplayName("Tests for methods creating Room database builders")
 class RoomDatabaseBuilderTest {
 
     @MockK
