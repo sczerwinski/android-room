@@ -9,4 +9,6 @@ pluginManagement {
 
 rootProject.name = "android-room"
 
+include(":room:converters")
+include(":room:converters-processor")
 include(":room:database")
