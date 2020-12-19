@@ -86,7 +86,7 @@ Enum can be stored in the database as name (`String` – default) or as ordinal 
 
 To store enum in a text field (as name):
 ```kotlin
-GenerateEnumTypeConverter(type = EnumType.STRING)
+@GenerateEnumTypeConverter(type = EnumType.STRING)
 enum class MyEnum {
     FOO,
     BAR
@@ -95,7 +95,7 @@ enum class MyEnum {
 
 To store enum in an integer field (as ordinal):
 ```kotlin
-GenerateEnumTypeConverter(type = EnumType.ORDINAL)
+@GenerateEnumTypeConverter(type = EnumType.ORDINAL)
 enum class MyEnum {
     FOO,
     BAR
