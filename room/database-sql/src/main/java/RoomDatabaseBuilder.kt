@@ -85,3 +85,23 @@ inline fun <T : RoomDatabase> RoomDatabase.Builder<T>.addMigrationFromSql(
     sql: SQLScriptExecutor.Builder.() -> Unit
 ): RoomDatabase.Builder<T> =
     addMigrations(SQLScriptMigration(startVersion, endVersion, SQLScriptExecutor(sql)))
+
+/**
+ * Adds a migration to the builder, executing an SQL script located in the application `assets/` folder.
+ *
+ * **Example:**
+ * ```
+ * val database = context.roomDatabaseBuilder<MyDatabase>()
+ *     .addMigrationFromSqlAsset(startVersion = 1, endVersion = 2, context, "sql/migrate_1_2.sql")
+ *     .build()
+ * ```
+ */
+fun <T : RoomDatabase> RoomDatabase.Builder<T>.addMigrationFromSqlAsset(
+    startVersion: Int,
+    endVersion: Int,
+    context: Context,
+    sqlFilePath: String
+): RoomDatabase.Builder<T> {
+    val sqlScript = context.assets.open(sqlFilePath).bufferedReader().use { it.readText() }
+    return addMigrations(SQLScriptMigration(startVersion, endVersion, SQLScriptExecutor { +sqlScript }))
+}

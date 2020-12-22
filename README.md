@@ -131,6 +131,15 @@ val database = context.roomDatabaseBuilder<MyDatabase>()
     .build()
 ```
 
+#### Add Migration From SQL Asset
+Adds a migration to the builder, executing an SQL script located in the application `assets/` folder.
+
+```kotlin
+val database = context.roomDatabaseBuilder<MyDatabase>()
+    .addMigrationFromSqlAsset(startVersion = 1, endVersion = 2, context, "sql/migrate_1_2.sql")
+    .build()
+```
+
 
 [ci-build]: https://github.com/sczerwinski/android-room/actions?query=workflow%3ABuild
 [room-database-release]: https://repo1.maven.org/maven2/it/czerwinski/android/room/room-database/

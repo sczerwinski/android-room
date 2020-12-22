@@ -9,6 +9,7 @@
   - `populateFromSql`
   - `populateFromSqlAsset`
   - `addMigrationFromSql`
+  - `addMigrationFromSqlAsset`
 
 ### Removed
 - Annotation processor generating `TypeConverter`s for enum classes
