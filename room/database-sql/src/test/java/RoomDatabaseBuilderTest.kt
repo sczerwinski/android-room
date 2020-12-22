@@ -72,6 +72,10 @@ class RoomDatabaseBuilderTest {
             callback = callbackSlot.captured
             databaseBuilder
         }
+        every { databaseBuilder.build() } answers {
+            callback.onCreate(database)
+            roomDatabase
+        }
     }
 
     @BeforeEach
@@ -89,11 +93,6 @@ class RoomDatabaseBuilderTest {
             "THEN execute all SQL statements on the database"
     )
     fun populateFromSql() {
-        every { databaseBuilder.build() } answers {
-            callback.onCreate(database)
-            roomDatabase
-        }
-
         val sqlScript = """
             insert into users(id, username, password) values (1, 'root', 'qwerty');
             insert into user_roles(user_id, role_id) values (1, 1);
@@ -104,6 +103,34 @@ class RoomDatabaseBuilderTest {
             .populateFromSql {
                 +sqlScript
             }
+            .build()
+
+        verifySequence {
+            database.beginTransaction()
+            database.execSQL("insert into users(id, username, password) values (1, 'root', 'qwerty')")
+            database.execSQL("insert into user_roles(user_id, role_id) values (1, 1)")
+            database.execSQL("update roles set name='Admin' where id is 1")
+            database.setTransactionSuccessful()
+            database.endTransaction()
+        }
+    }
+
+    @Test
+    @DisplayName(
+        value = "GIVEN database will be created for the first time, " +
+            "WHEN populateFromSqlAsset, " +
+            "THEN execute all SQL statements on the database"
+    )
+    fun populateFromSqlAsset() {
+        val sqlScript = """
+            insert into users(id, username, password) values (1, 'root', 'qwerty');
+            insert into user_roles(user_id, role_id) values (1, 1);
+            update roles set name='Admin' where id is 1;
+        """.trimIndent()
+        every { context.assets.open("populate.sql") } returns sqlScript.byteInputStream()
+
+        Room.inMemoryDatabaseBuilder(context, TestDatabase::class.java)
+            .populateFromSqlAsset(context, "populate.sql")
             .build()
 
         verifySequence {

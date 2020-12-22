@@ -105,6 +105,15 @@ val database = context.roomDatabaseBuilder<MyDatabase>()
     .build()
 ```
 
+#### Populate From SQL Asset
+Configures Room to populate a newly created database with an SQL script located in the application `assets/` folder.
+
+```kotlin
+val database = context.roomDatabaseBuilder<MyDatabase>()
+    .populateFromSqlAsset(context, "sql/populate.sql")
+    .build()
+```
+
 
 [ci-build]: https://github.com/sczerwinski/android-room/actions?query=workflow%3ABuild
 [room-database-release]: https://repo1.maven.org/maven2/it/czerwinski/android/room/room-database/

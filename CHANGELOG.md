@@ -6,6 +6,7 @@
 - `SQLPopulateRoomDatabaseCallback`
 - Extension functions for `RoomDatabase.Builder`:
   - `populateFromSql`
+  - `populateFromSqlAsset`
 
 ### Removed
 - Annotation processor generating `TypeConverter`s for enum classes

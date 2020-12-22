@@ -16,6 +16,7 @@
 
 package it.czerwinski.android.room.database.sql
 
+import android.content.Context
 import androidx.room.RoomDatabase
 
 /**
@@ -39,3 +40,23 @@ inline fun <T : RoomDatabase> RoomDatabase.Builder<T>.populateFromSql(
     sql: SQLScriptExecutor.Builder.() -> Unit
 ): RoomDatabase.Builder<T> =
     addCallback(SQLPopulateRoomDatabaseCallback(SQLScriptExecutor(sql)))
+
+/**
+ * Configures Room to populate a newly created database with an SQL script located in the application `assets/` folder.
+ *
+ * When an existing database is opened, the SQL script will not be executed.
+ *
+ * **Example:**
+ * ```
+ * val database = context.roomDatabaseBuilder<MyDatabase>()
+ *     .populateFromSqlAsset(context, "sql/populate.sql")
+ *     .build()
+ * ```
+ */
+fun <T : RoomDatabase> RoomDatabase.Builder<T>.populateFromSqlAsset(
+    context: Context,
+    sqlFilePath: String
+): RoomDatabase.Builder<T> {
+    val sqlScript = context.assets.open(sqlFilePath).bufferedReader().use { it.readText() }
+    return addCallback(SQLPopulateRoomDatabaseCallback(SQLScriptExecutor { +sqlScript }))
+}
