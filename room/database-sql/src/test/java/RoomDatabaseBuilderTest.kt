@@ -22,6 +22,7 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import io.mockk.Runs
+import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
@@ -29,6 +30,7 @@ import io.mockk.just
 import io.mockk.mockkStatic
 import io.mockk.slot
 import io.mockk.unmockkStatic
+import io.mockk.verify
 import io.mockk.verifySequence
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
@@ -207,6 +209,40 @@ class RoomDatabaseBuilderTest {
             database.setTransactionSuccessful()
             database.endTransaction()
         }
+    }
+
+    @Test
+    @DisplayName(
+        value = "GIVEN database builder, " +
+            "WHEN addMigrationsFromSqlAssets, " +
+            "THEN add all matching SQL script migrations"
+    )
+    fun addMigrationsFromSqlAssets() {
+        every { context.assets.list("sql") } returns arrayOf(
+            "migration_1_2.sql",
+            "migration_2_3.sql",
+            "migration_1_3.sql",
+            "migration_128_345.sql",
+            "populate.sql",
+            "dummy.sql",
+        )
+        every { context.assets.open(any()) } returns "".byteInputStream()
+        every { databaseBuilder.addMigrations(*anyVararg()) } returns databaseBuilder
+
+        Room.inMemoryDatabaseBuilder(context, TestDatabase::class.java)
+            .addMigrationsFromSqlAssets(context, sqlFilePathFormat = "sql/migration_{}_{}.sql")
+            .build()
+
+        verify(exactly = 1) {
+            databaseBuilder.addMigrations(
+                match { migration -> migration.startVersion == 1 && migration.endVersion == 2 },
+                match { migration -> migration.startVersion == 2 && migration.endVersion == 3 },
+                match { migration -> migration.startVersion == 1 && migration.endVersion == 3 },
+                match { migration -> migration.startVersion == 128 && migration.endVersion == 345 }
+            )
+            databaseBuilder.build()
+        }
+        confirmVerified(databaseBuilder)
     }
 
     abstract class TestDatabase : RoomDatabase()

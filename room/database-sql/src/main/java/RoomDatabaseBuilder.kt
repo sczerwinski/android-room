@@ -18,6 +18,10 @@ package it.czerwinski.android.room.database.sql
 
 import android.content.Context
 import androidx.room.RoomDatabase
+import java.io.File
+
+private const val SQL_MIGRATE_ASSET_START_GROUP = 1
+private const val SQL_MIGRATE_ASSET_END_GROUP = 2
 
 /**
  * Configures Room to populate a newly created database with an SQL script.
@@ -104,4 +108,48 @@ fun <T : RoomDatabase> RoomDatabase.Builder<T>.addMigrationFromSqlAsset(
 ): RoomDatabase.Builder<T> {
     val sqlScript = context.assets.open(sqlFilePath).bufferedReader().use { it.readText() }
     return addMigrations(SQLScriptMigration(startVersion, endVersion, SQLScriptExecutor { +sqlScript }))
+}
+
+/**
+ * Adds migrations to the builder, executing an SQL scripts located in the application `assets/` folder,
+ * matching the given format.
+ *
+ * **Example:**
+ * ```
+ * val database = context.roomDatabaseBuilder<MyDatabase>()
+ *     .addMigrationsFromSqlAssets(context, sqlFilePathFormat = "sql/migrate_{}_{}.sql")
+ *     .build()
+ * ```
+ */
+fun <T : RoomDatabase> RoomDatabase.Builder<T>.addMigrationsFromSqlAssets(
+    context: Context,
+    sqlFilePathFormat: String
+): RoomDatabase.Builder<T> {
+    val dir = File(sqlFilePathFormat).parent.orEmpty()
+    val assetFiles = context.assets.list(dir).orEmpty()
+    val sqlFileFormat = sqlFilePathFormat
+        .replace(oldValue = "{}", newValue = "%d")
+    val sqlFileRegex = sqlFilePathFormat
+        .replace(oldValue = "{}", newValue = "(\\d+)")
+        .replace(oldValue = ".", newValue = "\\.")
+        .toRegex()
+
+    val migrations = assetFiles
+        .map { fileName -> File(dir, fileName).path }
+        .mapNotNull { filePath ->
+            sqlFileRegex.find(filePath)?.groups?.let { groups ->
+                val startVersion = groups[SQL_MIGRATE_ASSET_START_GROUP]?.value?.toIntOrNull()
+                val endVersion = groups[SQL_MIGRATE_ASSET_END_GROUP]?.value?.toIntOrNull()
+                if (startVersion != null && endVersion != null) startVersion to endVersion
+                else null
+            }
+        }
+        .map { (startVersion, endVersion) ->
+            val fileName = sqlFileFormat.format(startVersion, endVersion)
+            val sqlScript = context.assets.open(fileName).bufferedReader().use { it.readText() }
+            SQLScriptMigration(startVersion, endVersion, SQLScriptExecutor { +sqlScript })
+        }
+
+    @Suppress("SpreadOperator")
+    return addMigrations(*migrations.toTypedArray())
 }
