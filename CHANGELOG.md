@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- `SQLScriptExecutor`
+
 ### Removed
 - Annotation processor generating `TypeConverter`s for enum classes
   (generated sources are not picked up by Room compiler)
