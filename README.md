@@ -114,6 +114,23 @@ val database = context.roomDatabaseBuilder<MyDatabase>()
     .build()
 ```
 
+#### Add Migration From SQL
+Adds an SQL script migration to the builder.
+
+```kotlin
+val database = context.roomDatabaseBuilder<MyDatabase>()
+    .addMigrationFromSql(startVersion = 1, endVersion = 2) {
+        +"""
+            create table if not exists users (
+                id integer primary key asc,
+                username text not null,
+                password text not null
+            );
+        """
+    }
+    .build()
+```
+
 
 [ci-build]: https://github.com/sczerwinski/android-room/actions?query=workflow%3ABuild
 [room-database-release]: https://repo1.maven.org/maven2/it/czerwinski/android/room/room-database/

@@ -4,9 +4,11 @@
 ### Added
 - `SQLScriptExecutor`
 - `SQLPopulateRoomDatabaseCallback`
+- `SQLScriptMigration`
 - Extension functions for `RoomDatabase.Builder`:
   - `populateFromSql`
   - `populateFromSqlAsset`
+  - `addMigrationFromSql`
 
 ### Removed
 - Annotation processor generating `TypeConverter`s for enum classes

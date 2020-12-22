@@ -60,3 +60,28 @@ fun <T : RoomDatabase> RoomDatabase.Builder<T>.populateFromSqlAsset(
     val sqlScript = context.assets.open(sqlFilePath).bufferedReader().use { it.readText() }
     return addCallback(SQLPopulateRoomDatabaseCallback(SQLScriptExecutor { +sqlScript }))
 }
+
+/**
+ * Adds an SQL script migration to the builder.
+ *
+ * **Example:**
+ * ```
+ * val database = context.roomDatabaseBuilder<MyDatabase>()
+ *     .addMigrationFromSql(startVersion = 1, endVersion = 2) {
+ *         +"""
+ *             create table if not exists users (
+ *                 id integer primary key asc,
+ *                 username text not null,
+ *                 password text not null
+ *             );
+ *         """
+ *     }
+ *     .build()
+ * ```
+ */
+inline fun <T : RoomDatabase> RoomDatabase.Builder<T>.addMigrationFromSql(
+    startVersion: Int,
+    endVersion: Int,
+    sql: SQLScriptExecutor.Builder.() -> Unit
+): RoomDatabase.Builder<T> =
+    addMigrations(SQLScriptMigration(startVersion, endVersion, SQLScriptExecutor(sql)))

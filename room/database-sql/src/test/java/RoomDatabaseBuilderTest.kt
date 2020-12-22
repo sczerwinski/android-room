@@ -19,6 +19,7 @@ package it.czerwinski.android.room.database.sql
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import io.mockk.Runs
 import io.mockk.every
@@ -53,6 +54,8 @@ class RoomDatabaseBuilderTest {
 
     private lateinit var callback: RoomDatabase.Callback
 
+    private lateinit var migration: Migration
+
     @BeforeEach
     fun initRoomMockk() {
         mockkStatic("androidx.room.Room")
@@ -68,12 +71,18 @@ class RoomDatabaseBuilderTest {
     @BeforeEach
     fun setUpDatabaseBuilder() {
         val callbackSlot = slot<RoomDatabase.Callback>()
+        val migrationSlot = slot<Migration>()
         every { databaseBuilder.addCallback(capture(callbackSlot)) } answers {
             callback = callbackSlot.captured
             databaseBuilder
         }
+        every { databaseBuilder.addMigrations(capture(migrationSlot)) } answers {
+            migration = migrationSlot.captured
+            databaseBuilder
+        }
         every { databaseBuilder.build() } answers {
-            callback.onCreate(database)
+            if (::callback.isInitialized) callback.onCreate(database)
+            if (::migration.isInitialized) migration.migrate(database)
             roomDatabase
         }
     }
@@ -131,6 +140,35 @@ class RoomDatabaseBuilderTest {
 
         Room.inMemoryDatabaseBuilder(context, TestDatabase::class.java)
             .populateFromSqlAsset(context, "populate.sql")
+            .build()
+
+        verifySequence {
+            database.beginTransaction()
+            database.execSQL("insert into users(id, username, password) values (1, 'root', 'qwerty')")
+            database.execSQL("insert into user_roles(user_id, role_id) values (1, 1)")
+            database.execSQL("update roles set name='Admin' where id is 1")
+            database.setTransactionSuccessful()
+            database.endTransaction()
+        }
+    }
+
+    @Test
+    @DisplayName(
+        value = "GIVEN database will be migrated from version 1 to 2, " +
+            "WHEN addMigrationFromSql, " +
+            "THEN execute all SQL statements on the database"
+    )
+    fun addMigrationFromSql() {
+        val sqlScript = """
+            insert into users(id, username, password) values (1, 'root', 'qwerty');
+            insert into user_roles(user_id, role_id) values (1, 1);
+            update roles set name='Admin' where id is 1;
+        """.trimIndent()
+
+        Room.inMemoryDatabaseBuilder(context, TestDatabase::class.java)
+            .addMigrationFromSql(startVersion = 1, endVersion = 2) {
+                +sqlScript
+            }
             .build()
 
         verifySequence {
