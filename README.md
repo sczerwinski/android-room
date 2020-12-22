@@ -82,8 +82,8 @@ val database = context.roomInMemoryDatabaseBuilder<MyDatabase>().build()
 val database: SupportSQLiteDatabase
 val sqlScriptExecutor = SQLScriptExecutor {
     +"""
-        insert into users(id, username, password) values (1, 'root', 'qwerty')
-        insert into user_roles(user_id, role_id) values (1, 1)
+        insert into users(id, username, password) values (1, 'root', 'qwerty');
+        insert into user_roles(user_id, role_id) values (1, 1);
     """
 }
 sqlScriptExecutor.executeOn(database)
@@ -98,8 +98,8 @@ Configures Room to populate a newly created database with an SQL script.
 val database = context.roomDatabaseBuilder<MyDatabase>()
     .populateFromSql {
         +"""
-            insert into users(id, username, password) values (1, 'root', 'qwerty')
-            insert into user_roles(user_id, role_id) values (1, 1)
+            insert into users(id, username, password) values (1, 'root', 'qwerty');
+            insert into user_roles(user_id, role_id) values (1, 1);
         """
     }
     .build()

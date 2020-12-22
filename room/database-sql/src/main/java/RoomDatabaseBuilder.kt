@@ -28,8 +28,8 @@ import androidx.room.RoomDatabase
  * val database = context.roomDatabaseBuilder<MyDatabase>()
  *     .populateFromSql {
  *         +"""
- *             insert into users(id, username, password) values (1, 'root', 'qwerty')
- *             insert into user_roles(user_id, role_id) values (1, 1)
+ *             insert into users(id, username, password) values (1, 'root', 'qwerty');
+ *             insert into user_roles(user_id, role_id) values (1, 1);
  *         """
  *     }
  *     .build()
