@@ -89,6 +89,22 @@ val sqlScriptExecutor = SQLScriptExecutor {
 sqlScriptExecutor.executeOn(database)
 ```
 
+### Room Database Builder Extensions
+
+#### Populate From SQL
+Configures Room to populate a newly created database with an SQL script.
+
+```kotlin
+val database = context.roomDatabaseBuilder<MyDatabase>()
+    .populateFromSql {
+        +"""
+            insert into users(id, username, password) values (1, 'root', 'qwerty')
+            insert into user_roles(user_id, role_id) values (1, 1)
+        """
+    }
+    .build()
+```
+
 
 [ci-build]: https://github.com/sczerwinski/android-room/actions?query=workflow%3ABuild
 [room-database-release]: https://repo1.maven.org/maven2/it/czerwinski/android/room/room-database/

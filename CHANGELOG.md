@@ -3,6 +3,9 @@
 ## [Unreleased]
 ### Added
 - `SQLScriptExecutor`
+- `SQLPopulateRoomDatabaseCallback`
+- Extension functions for `RoomDatabase.Builder`:
+  - `populateFromSql`
 
 ### Removed
 - Annotation processor generating `TypeConverter`s for enum classes
