@@ -2,16 +2,8 @@
 
 ## [Unreleased]
 ### Added
+- Annotation processor generating `TypeConverter`s for enum classes
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [1.0.0-ALPHA2]
 ### Added
 - `SQLScriptExecutor`
