@@ -19,6 +19,7 @@ package it.czerwinski.android.room.converters.processor
 import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.TypeSpec
 import javax.annotation.processing.Filer
+import javax.lang.model.element.Modifier
 
 object EnumTypeConverterPoet {
 
@@ -36,6 +37,7 @@ object EnumTypeConverterPoet {
         methodsPoet: EnumTypeConverterMethodsPoet
     ): TypeSpec =
         TypeSpec.classBuilder(metadata.typeConverterClassName)
+            .addModifiers(Modifier.PUBLIC)
             .addMethod(methodsPoet.generateFromEnumMethod(metadata))
             .addMethod(methodsPoet.generateToEnumMethod(metadata))
             .build()

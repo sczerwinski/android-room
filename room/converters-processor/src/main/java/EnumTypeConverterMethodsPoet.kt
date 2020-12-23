@@ -23,6 +23,7 @@ import com.squareup.javapoet.MethodSpec
 import com.squareup.javapoet.ParameterSpec
 import it.czerwinski.android.room.converters.EnumType
 import java.util.Locale
+import javax.lang.model.element.Modifier
 
 interface EnumTypeConverterMethodsPoet {
     fun generateFromEnumMethod(metadata: EnumMetadata): MethodSpec
@@ -48,6 +49,7 @@ abstract class AbstractEnumTypeConverterMethodsPoet : EnumTypeConverterMethodsPo
         return MethodSpec.methodBuilder("from${metadata.enumSimpleName}")
             .addAnnotation(TypeConverter::class.java)
             .addAnnotation(Nullable::class.java)
+            .addModifiers(Modifier.PUBLIC)
             .addParameter(
                 ParameterSpec.builder(metadata.enumTypeName, paramName)
                     .addAnnotation(Nullable::class.java)
@@ -63,6 +65,7 @@ abstract class AbstractEnumTypeConverterMethodsPoet : EnumTypeConverterMethodsPo
         return MethodSpec.methodBuilder("to${metadata.enumSimpleName}")
             .addAnnotation(TypeConverter::class.java)
             .addAnnotation(Nullable::class.java)
+            .addModifiers(Modifier.PUBLIC)
             .addParameter(
                 ParameterSpec.builder(convertType, paramName)
                     .addAnnotation(Nullable::class.java)
