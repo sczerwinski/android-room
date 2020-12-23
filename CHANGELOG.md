@@ -1,6 +1,17 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- `SQLScriptExecutor`
+- `SQLPopulateRoomDatabaseCallback`
+- `SQLScriptMigration`
+- Extension functions for `RoomDatabase.Builder`:
+  - `populateFromSql`
+  - `populateFromSqlAsset`
+  - `addMigrationFromSql`
+  - `addMigrationFromSqlAsset`
+  - `addMigrationsFromSqlAssets`
+
 ### Removed
 - Annotation processor generating `TypeConverter`s for enum classes
   (generated sources are not picked up by Room compiler)
