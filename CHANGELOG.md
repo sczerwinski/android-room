@@ -12,6 +12,11 @@
   - `addMigrationFromSqlAsset`
   - `addMigrationsFromSqlAssets`
 
+### Changed
+- Dependencies:
+  - Upgrade `io.gitlab.arturbosch.detekt` to `1.15.0`
+  - Upgrade `io.mockk:mockk` to `1.10.3-jdk8`
+
 ### Removed
 - Annotation processor generating `TypeConverter`s for enum classes
   (generated sources are not picked up by Room compiler)
