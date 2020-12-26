@@ -1,6 +1,18 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [1.0.0-BETA1]
 No changes since 1.0.0-ALPHA3
 
 ## [1.0.0-ALPHA3]
