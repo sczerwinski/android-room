@@ -2,6 +2,40 @@
 
 # Extensions for Jetpack Room
 
+## Room Extensions – Aggregate
+
+[![Maven Central](https://img.shields.io/maven-central/v/it.czerwinski.android.room/room-extensions)][room-extensions-release]
+[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/it.czerwinski.android.room/room-extensions?server=https%3A%2F%2Foss.sonatype.org)][room-extensions-snapshot]
+
+Artifact `it.czerwinski.android.room:room-extensions` aggregates artifacts:
+- `room-database`,
+- `room-database-sql`,
+- `room-converters`.
+
+You can either use `room-extensions` or any combination of the other artifacts, whichever suites your project.
+
+<details>
+  <summary>Kotlin</summary>
+
+  ```kotlin
+  dependencies {
+      implementation("androidx.room:room-runtime:2.2.6")
+      implementation("it.czerwinski.android.room:room-extensions:[VERSION]")
+  }
+  ```
+</details>
+
+<details>
+  <summary>Groovy</summary>
+
+  ```groovy
+  dependencies {
+      implementation 'androidx.room:room-runtime:2.2.6'
+      implementation 'it.czerwinski.android.room:room-extensions:[VERSION]'
+  }
+  ```
+</details>
+
 ## Room Database Extensions
 
 [![Maven Central](https://img.shields.io/maven-central/v/it.czerwinski.android.room/room-database)][room-database-release]
@@ -205,6 +239,8 @@ enum class MyEnum {
 
 
 [ci-build]: https://github.com/sczerwinski/android-room/actions?query=workflow%3ABuild
+[room-extensions-release]: https://repo1.maven.org/maven2/it/czerwinski/android/room/room-extensions/
+[room-extensions-snapshot]: https://oss.sonatype.org/content/repositories/snapshots/it/czerwinski/android/room/room-extensions/
 [room-database-release]: https://repo1.maven.org/maven2/it/czerwinski/android/room/room-database/
 [room-database-snapshot]: https://oss.sonatype.org/content/repositories/snapshots/it/czerwinski/android/room/room-database/
 [room-database-sql-release]: https://repo1.maven.org/maven2/it/czerwinski/android/room/room-database-sql/
