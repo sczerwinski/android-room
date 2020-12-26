@@ -1,17 +1,8 @@
 # Changelog
 
 ## [Unreleased]
-### Added
+No changes since 1.0.0-ALPHA3
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [1.0.0-ALPHA3]
 ### Added
 - Annotation processor generating `TypeConverter`s for enum classes
