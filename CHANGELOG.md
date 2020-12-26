@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [1.0.0-RC1]
+### Added
 - Aggregating artifact: `room-extensions`
 
 ## [1.0.0-BETA1]
