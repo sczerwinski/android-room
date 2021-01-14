@@ -35,7 +35,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
-    testImplementation("io.mockk:mockk:1.10.4")
+    testImplementation("io.mockk:mockk:1.10.5")
 }
 
 tasks {
