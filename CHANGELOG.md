@@ -4,6 +4,7 @@
 ### Changed
 - Upgrade Gradle to `6.8`
 - Dependencies:
+  - Upgrade Kotlin to `1.4.30`
   - Upgrade Android Gradle Plugin to `4.1.2`
   - Upgrade `org.jetbrains.changelog` to `1.0.1`
   - Upgrade `io.mockk:mockk` to `1.10.5`
