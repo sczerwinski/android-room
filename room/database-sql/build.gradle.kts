@@ -35,7 +35,7 @@ dependencies {
 
     api("androidx.sqlite:sqlite-ktx:2.1.0")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
     testImplementation("io.mockk:mockk:1.10.5")
 }
