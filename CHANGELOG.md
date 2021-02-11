@@ -1,17 +1,9 @@
 # Changelog
 
 ## [Unreleased]
-### Added
-
 ### Changed
+- Upgrade Gradle to `6.8.2`
 
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [1.0.1]
 ### Changed
 - Upgrade Gradle to `6.8`
