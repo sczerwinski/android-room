@@ -4,6 +4,7 @@
 ### Changed
 - Upgrade Gradle to `6.8.2`
 - Dependencies:
+  - Upgrade Kotlin to `1.4.31`
   - Upgrade `android-junit5` to `1.7.1.1`
 
 ## [1.0.1]
