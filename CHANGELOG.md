@@ -2,10 +2,13 @@
 
 ## [Unreleased]
 ### Changed
-- Upgrade Gradle to `6.8.2`
+- Upgrade Gradle to `6.8.3`
 - Dependencies:
-  - Upgrade Kotlin to `1.4.31`
+  - Upgrade Kotlin to `1.4.32`
+  - Upgrade Android Gradle Plugin to `4.1.3`
   - Upgrade `android-junit5` to `1.7.1.1`
+  - Upgrade `io.mockk:mockk` to `1.11.0`
+  - Upgrade `io.gitlab.arturbosch.detekt` to `1.16.0`
 
 ## [1.0.1]
 ### Changed
