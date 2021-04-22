@@ -31,7 +31,7 @@ android {
 }
 
 dependencies {
-    implementation("androidx.room:room-runtime:2.2.6")
+    implementation("androidx.room:room-runtime:2.3.0")
 
     api("androidx.sqlite:sqlite-ktx:2.1.0")
 
