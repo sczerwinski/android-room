@@ -19,7 +19,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm")
     kotlin("kapt")
-    id("io.gitlab.arturbosch.detekt") version "1.16.0"
+    id("io.gitlab.arturbosch.detekt") version "1.17.0"
     id("org.jetbrains.dokka")
     `maven-publish`
     signing
@@ -36,12 +36,13 @@ tasks.withType<Test> {
 dependencies {
     implementation(project(":room:converters"))
 
-    implementation("androidx.room:room-runtime:2.2.6")
+    implementation("androidx.annotation:annotation:1.2.0")
+    implementation("androidx.room:room-common:2.3.0")
     implementation("com.squareup:javapoet:1.13.0")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.1")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.2")
     testImplementation("io.mockk:mockk:1.11.0")
     kaptTest(project(":room:converters-processor"))
 }
