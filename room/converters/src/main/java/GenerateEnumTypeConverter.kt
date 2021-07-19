@@ -29,6 +29,7 @@ package it.czerwinski.android.room.converters
  * }
  * ```
  */
+@Deprecated(message = "Room 2.3.0 offers built-in enumerated type support")
 @Target(AnnotationTarget.CLASS)
 @Retention(AnnotationRetention.SOURCE)
 @MustBeDocumented

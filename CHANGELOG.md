@@ -11,6 +11,9 @@
   - Upgrade `io.mockk:mockk` to `1.11.0`
   - Upgrade `io.gitlab.arturbosch.detekt` to `1.17.1`
 
+### Deprecated
+- Enum `TypeConverter` generator
+
 ## [1.0.1]
 ### Changed
 - Upgrade Gradle to `6.8`

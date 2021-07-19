@@ -19,15 +19,22 @@ package it.czerwinski.android.room.converters.processor
 import it.czerwinski.android.room.converters.GenerateEnumTypeConverter
 import javax.annotation.processing.AbstractProcessor
 import javax.annotation.processing.RoundEnvironment
+import javax.annotation.processing.SupportedSourceVersion
+import javax.lang.model.SourceVersion
 import javax.lang.model.element.Element
 import javax.lang.model.element.TypeElement
+import javax.tools.Diagnostic
 
+@SupportedSourceVersion(SourceVersion.RELEASE_8)
 class EnumTypeConvertersGenerator : AbstractProcessor() {
 
     override fun getSupportedAnnotationTypes(): MutableSet<String> =
         mutableSetOf(annotationClass.canonicalName)
 
     override fun process(annotations: MutableSet<out TypeElement>, roundEnvironment: RoundEnvironment): Boolean {
+
+        processingEnv.messager.printMessage(Diagnostic.Kind.MANDATORY_WARNING, DEPRECATED_MESSAGE.trimIndent())
+
         roundEnvironment.getElementsAnnotatedWith(annotationClass)
             .map { element -> createEnumMetadata(element) }
             .forEach { enumMetadata -> generateEnumTypeConverter(enumMetadata) }
@@ -45,6 +52,12 @@ class EnumTypeConvertersGenerator : AbstractProcessor() {
     }
 
     companion object {
+        private const val DEPRECATED_MESSAGE = """
+            Annotation processor 'it.czerwinski.android.room:room-converters-processor' is deprecated.
+            Room 2.3.0 offers built-in enumerated type support.
+            See also: Room release notes (https://developer.android.com/jetpack/androidx/releases/room#2.3.0)
+        """
+
         private val annotationClass = GenerateEnumTypeConverter::class.java
     }
 }
