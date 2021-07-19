@@ -19,7 +19,7 @@ You can either use `room-extensions` or any combination of the other artifacts, 
 
   ```kotlin
   dependencies {
-      implementation("androidx.room:room-runtime:2.2.6")
+      implementation("androidx.room:room-runtime:2.3.0")
       implementation("it.czerwinski.android.room:room-extensions:[VERSION]")
   }
   ```
@@ -30,7 +30,7 @@ You can either use `room-extensions` or any combination of the other artifacts, 
 
   ```groovy
   dependencies {
-      implementation 'androidx.room:room-runtime:2.2.6'
+      implementation 'androidx.room:room-runtime:2.3.0'
       implementation 'it.czerwinski.android.room:room-extensions:[VERSION]'
   }
   ```
@@ -46,7 +46,7 @@ You can either use `room-extensions` or any combination of the other artifacts, 
 
   ```kotlin
   dependencies {
-      implementation("androidx.room:room-runtime:2.2.6")
+      implementation("androidx.room:room-runtime:2.3.0")
       implementation("it.czerwinski.android.room:room-database:[VERSION]")
   }
   ```
@@ -57,7 +57,7 @@ You can either use `room-extensions` or any combination of the other artifacts, 
 
   ```groovy
   dependencies {
-      implementation 'androidx.room:room-runtime:2.2.6'
+      implementation 'androidx.room:room-runtime:2.3.0'
       implementation 'it.czerwinski.android.room:room-database:[VERSION]'
   }
   ```
@@ -93,7 +93,7 @@ val database = context.roomInMemoryDatabaseBuilder<MyDatabase>().build()
 
   ```kotlin
   dependencies {
-      implementation("androidx.room:room-runtime:2.2.6")
+      implementation("androidx.room:room-runtime:2.3.0")
       implementation("it.czerwinski.android.room:room-database-sql:[VERSION]")
   }
   ```
@@ -104,7 +104,7 @@ val database = context.roomInMemoryDatabaseBuilder<MyDatabase>().build()
 
   ```groovy
   dependencies {
-      implementation 'androidx.room:room-runtime:2.2.6'
+      implementation 'androidx.room:room-runtime:2.3.0'
       implementation 'it.czerwinski.android.room:room-database-sql:[VERSION]'
   }
   ```
