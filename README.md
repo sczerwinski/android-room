@@ -9,8 +9,7 @@
 
 Artifact `it.czerwinski.android.room:room-extensions` aggregates artifacts:
 - `room-database`,
-- `room-database-sql`,
-- `room-converters`.
+- `room-database-sql`.
 
 You can either use `room-extensions` or any combination of the other artifacts, whichever suites your project.
 
@@ -184,14 +183,17 @@ val database = context.roomDatabaseBuilder<MyDatabase>()
     .build()
 ```
 
-## [DEPRECATED] Room `TypeConverter`s Generator
+## Deprecated Room `TypeConverter`s Generator
 
 **Deprecated:** [Room 2.3.0][room:2.3.0] offers built-in `enum` support.
 
-[![Maven Central](https://img.shields.io/maven-central/v/it.czerwinski.android.room/room-converters)][room-converters-release]
-[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/it.czerwinski.android.room/room-converters?server=https%3A%2F%2Foss.sonatype.org)][room-converters-snapshot]
+Future releases (after v1.1.0) of the library will no longer include these artifacts:
+* `it.czerwinski.android.room:room-converters`
+* `it.czerwinski.android.room:room-converters-processor`
 
-### [DEPRECATED] `GenerateEnumTypeConverter` Annotation
+[![Maven Central](https://img.shields.io/maven-central/v/it.czerwinski.android.room/room-converters)][room-converters-release]
+
+### Deprecated `GenerateEnumTypeConverter` Annotation
 
 **Deprecated:** [Room 2.3.0][room:2.3.0] offers built-in `enum` support.
 
@@ -204,6 +206,5 @@ val database = context.roomDatabaseBuilder<MyDatabase>()
 [room-database-sql-release]: https://repo1.maven.org/maven2/it/czerwinski/android/room/room-database-sql/
 [room-database-sql-snapshot]: https://oss.sonatype.org/content/repositories/snapshots/it/czerwinski/android/room/room-database-sql/
 [room-converters-release]: https://repo1.maven.org/maven2/it/czerwinski/android/room/room-converters/
-[room-converters-snapshot]: https://oss.sonatype.org/content/repositories/snapshots/it/czerwinski/android/room/room-converters/
 
 [room:2.3.0]: https://developer.android.com/jetpack/androidx/releases/room#2.3.0

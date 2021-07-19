@@ -1,17 +1,11 @@
 # Changelog
 
 ## [Unreleased]
-### Added
-
-### Changed
-
-### Deprecated
 
 ### Removed
+- `@GenerateEnumTypeConverter` annotation
+- Enum `TypeConverter` generator
 
-### Fixed
-
-### Security
 ## [1.1.0]
 ### Changed
 - Upgrade Gradle to `6.9`
