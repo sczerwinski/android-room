@@ -30,7 +30,6 @@ android {
 }
 
 dependencies {
-    api(project(":room:converters"))
     api(project(":room:database"))
     api(project(":room:database-sql"))
 }
