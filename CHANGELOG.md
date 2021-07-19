@@ -4,11 +4,12 @@
 ### Changed
 - Upgrade Gradle to `6.9`
 - Dependencies:
-  - Upgrade Kotlin to `1.5.10`
-  - Upgrade Android Gradle Plugin to `4.2.1`
+  - Upgrade Kotlin to `1.5.21`
+  - Upgrade Android Gradle Plugin to `4.2.2`
   - Upgrade Room `2.3.0`
+  - Upgrade `org.jetbrains.changelog` to `1.2.0`
   - Upgrade `android-junit5` to `1.7.1.1`
-  - Upgrade `io.mockk:mockk` to `1.11.0`
+  - Upgrade `io.mockk:mockk` to `1.12.0`
   - Upgrade `io.gitlab.arturbosch.detekt` to `1.17.1`
 
 ### Deprecated
