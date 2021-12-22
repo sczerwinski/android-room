@@ -5,10 +5,15 @@
 ### Changed
 - Upgrade Gradle to `7.2`
 - Dependencies:
-  - Upgrade Kotlin to `1.5.30`
-  - Upgrade Android Gradle Plugin to `7.0.1`
-  - Upgrade `org.jetbrains.changelog` to `1.3.0`
-  - Upgrade `io.gitlab.arturbosch.detekt` to `1.18.0`
+  - Upgrade Kotlin to `1.6.10`
+  - Upgrade Android Gradle Plugin to `7.0.4`
+  - Upgrade Room `2.4.0`
+  - Upgrade `sqlite-ktx` to `2.2.0`
+  - Upgrade `org.jetbrains.changelog` to `1.3.1`
+  - Upgrade JUnit to `5.8.2`
+  - Upgrade `android-junit5` to `1.8.2.0`
+  - Upgrade `io.mockk:mockk` to `1.12.1`
+  - Upgrade `io.gitlab.arturbosch.detekt` to `1.19.0`
 
 ### Removed
 - `@GenerateEnumTypeConverter` annotation
