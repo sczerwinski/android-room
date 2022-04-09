@@ -27,6 +27,7 @@ import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.just
+import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.slot
 import io.mockk.unmockkStatic
@@ -243,6 +244,14 @@ class RoomDatabaseBuilderTest {
             databaseBuilder.build()
         }
         confirmVerified(databaseBuilder)
+        verifySequence {
+            context.assets.list("sql")
+            context.assets.open("sql/migration_1_2.sql")
+            context.assets.open("sql/migration_2_3.sql")
+            context.assets.open("sql/migration_1_3.sql")
+            context.assets.open("sql/migration_128_345.sql")
+        }
+        confirmVerified(context.assets)
     }
 
     abstract class TestDatabase : RoomDatabase()

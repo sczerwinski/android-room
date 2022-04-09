@@ -19,6 +19,9 @@
 - `@GenerateEnumTypeConverter` annotation
 - Enum `TypeConverter` generator
 
+### Fixed
+- Invalid assets used in `addMigrationsFromSqlAssets()` for assets inside a directory.
+
 ## [1.1.0]
 ### Changed
 - Upgrade Gradle to `6.9`
