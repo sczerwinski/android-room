@@ -1,7 +1,19 @@
 # Changelog
 
 ## [Unreleased]
+### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [1.2.0]
 ### Changed
 - Upgrade Gradle to `7.4.2`
 - Dependencies:
@@ -47,14 +59,12 @@
   - Upgrade `io.mockk:mockk` to `1.10.5`
 
 ## [1.0.0]
-No changes since 1.0.0-RC1
 
 ## [1.0.0-RC1]
 ### Added
 - Aggregating artifact: `room-extensions`
 
 ## [1.0.0-BETA1]
-No changes since 1.0.0-ALPHA3
 
 ## [1.0.0-ALPHA3]
 ### Added
