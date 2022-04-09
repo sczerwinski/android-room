@@ -18,7 +18,7 @@ You can either use `room-extensions` or any combination of the other artifacts, 
 
   ```kotlin
   dependencies {
-      implementation("androidx.room:room-runtime:2.3.0")
+      implementation("androidx.room:room-runtime:2.4.2")
       implementation("it.czerwinski.android.room:room-extensions:[VERSION]")
   }
   ```
@@ -29,7 +29,7 @@ You can either use `room-extensions` or any combination of the other artifacts, 
 
   ```groovy
   dependencies {
-      implementation 'androidx.room:room-runtime:2.3.0'
+      implementation 'androidx.room:room-runtime:2.4.2'
       implementation 'it.czerwinski.android.room:room-extensions:[VERSION]'
   }
   ```
@@ -45,7 +45,7 @@ You can either use `room-extensions` or any combination of the other artifacts, 
 
   ```kotlin
   dependencies {
-      implementation("androidx.room:room-runtime:2.3.0")
+      implementation("androidx.room:room-runtime:2.4.2")
       implementation("it.czerwinski.android.room:room-database:[VERSION]")
   }
   ```
@@ -56,7 +56,7 @@ You can either use `room-extensions` or any combination of the other artifacts, 
 
   ```groovy
   dependencies {
-      implementation 'androidx.room:room-runtime:2.3.0'
+      implementation 'androidx.room:room-runtime:2.4.2'
       implementation 'it.czerwinski.android.room:room-database:[VERSION]'
   }
   ```
@@ -183,11 +183,11 @@ val database = context.roomDatabaseBuilder<MyDatabase>()
     .build()
 ```
 
-## Deprecated Room `TypeConverter`s Generator
+## Room `TypeConverter`s Generator (Removed)
 
-**Deprecated:** [Room 2.3.0][room:2.3.0] offers built-in `enum` support.
+**Removed in v1.2.0:** [Room 2.3.0][room:2.3.0] offers built-in `enum` support.
 
-Future releases (after v1.1.0) of the library will no longer include these artifacts:
+Latest release of the library no longer includes artifacts:
 * `it.czerwinski.android.room:room-converters`
 * `it.czerwinski.android.room:room-converters-processor`
 
@@ -195,7 +195,7 @@ Future releases (after v1.1.0) of the library will no longer include these artif
 
 ### Deprecated `GenerateEnumTypeConverter` Annotation
 
-**Deprecated:** [Room 2.3.0][room:2.3.0] offers built-in `enum` support.
+**Removed in v1.2.0:** [Room 2.3.0][room:2.3.0] offers built-in `enum` support.
 
 
 [ci-build]: https://github.com/sczerwinski/android-room/actions?query=workflow%3ABuild
