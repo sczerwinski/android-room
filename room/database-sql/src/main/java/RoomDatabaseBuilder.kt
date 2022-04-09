@@ -126,10 +126,11 @@ fun <T : RoomDatabase> RoomDatabase.Builder<T>.addMigrationsFromSqlAssets(
     sqlFilePathFormat: String
 ): RoomDatabase.Builder<T> {
     val dir = File(sqlFilePathFormat).parent.orEmpty()
+    val sqlFileNameFormat = File(sqlFilePathFormat).name
     val assetFiles = context.assets.list(dir).orEmpty()
-    val sqlFileFormat = sqlFilePathFormat
+    val sqlFileFormat = sqlFileNameFormat
         .replace(oldValue = "{}", newValue = "%d")
-    val sqlFileRegex = sqlFilePathFormat
+    val sqlFileRegex = sqlFileNameFormat
         .replace(oldValue = "{}", newValue = "(\\d+)")
         .replace(oldValue = ".", newValue = "\\.")
         .toRegex()
