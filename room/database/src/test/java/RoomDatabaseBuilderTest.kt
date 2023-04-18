@@ -110,5 +110,6 @@ class RoomDatabaseBuilderTest {
         }
     }
 
+    @Suppress("UnnecessaryAbstractClass")
     abstract class TestDatabase : RoomDatabase()
 }

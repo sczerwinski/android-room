@@ -27,7 +27,6 @@ import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.just
-import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.slot
 import io.mockk.unmockkStatic
@@ -254,5 +253,6 @@ class RoomDatabaseBuilderTest {
         confirmVerified(context.assets)
     }
 
+    @Suppress("UnnecessaryAbstractClass")
     abstract class TestDatabase : RoomDatabase()
 }

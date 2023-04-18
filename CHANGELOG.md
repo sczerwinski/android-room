@@ -4,6 +4,22 @@
 ### Added
 
 ### Changed
+- Upgrade Gradle to `8.0.2`
+- Use Java 17
+- Change target SDK to `33`
+- Library dependencies:
+  - Upgrade Kotlin to `1.8.20`
+  - Upgrade Room to `2.5.1`
+  - Upgrade Android Gradle Plugin to `8.0.0`
+  - Upgrade `sqlite-ktx` to `2.3.1`
+- Test dependencies:
+  - Upgrade MockK to `1.13.5`
+  - Upgrade JUnit to `5.9.2`
+  - Upgrade `de.mannodermaus.gradle.plugins:android-junit5` to `1.8.2.1`
+- Build dependencies:
+  - Upgrade `io.gitlab.arturbosch.detekt` to `1.22.0`
+  - Upgrade `org.jetbrains.changelog` to `2.0.0`
+  - Upgrade Dokka to `1.8.10`
 
 ### Deprecated
 

@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    id("io.gitlab.arturbosch.detekt") version "1.19.0"
+    id("io.gitlab.arturbosch.detekt") version "1.22.0"
     id("org.jetbrains.dokka")
     `maven-publish`
     signing
@@ -9,11 +9,12 @@ plugins {
 
 android {
 
-    compileSdk = 31
+    compileSdk = 33
+
+    namespace = "it.czerwinski.android.room"
 
     defaultConfig {
         minSdk = 14
-        targetSdk = 31
     }
 
     buildTypes {
@@ -32,6 +33,11 @@ dependencies {
     api(project(":room:database-sql"))
 }
 
+detekt {
+    config = files("../../config/detekt/detekt.yml")
+    buildUponDefaultConfig  = true
+}
+
 tasks {
     dokkaJavadoc { setUpJavadocTask(project) }
     dokkaJekyll { setUpJekyllTask(project) }
@@ -48,4 +54,8 @@ afterEvaluate {
         repositories { sonatype(project) }
     }
     signing { signAllMavenPublications(project, publishing) }
+    tasks {
+        getByName("generateMetadataFileForLibAarPublication")
+            .dependsOn(getByName("sourcesJar"))
+    }
 }
