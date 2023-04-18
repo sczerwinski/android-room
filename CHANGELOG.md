@@ -1,8 +1,6 @@
 # Changelog
 
 ## [Unreleased]
-### Added
-
 ### Changed
 - Upgrade Gradle to `8.0.2`
 - Use Java 17
@@ -20,14 +18,6 @@
   - Upgrade `io.gitlab.arturbosch.detekt` to `1.22.0`
   - Upgrade `org.jetbrains.changelog` to `2.0.0`
   - Upgrade Dokka to `1.8.10`
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 
 ## [1.2.0]
 ### Changed
