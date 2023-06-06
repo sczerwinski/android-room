@@ -26,5 +26,5 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.21")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.21")
     implementation("org.jetbrains.dokka:dokka-core:1.8.10")
-    implementation("org.jetbrains.dokka:dokka-gradle-plugin:1.8.10")
+    implementation("org.jetbrains.dokka:dokka-gradle-plugin:1.8.20")
 }
